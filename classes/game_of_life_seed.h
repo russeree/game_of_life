@@ -22,7 +22,6 @@ class GameOfLifeSeed : public Gtk::Window
         bool load_from_grid; 
         unsigned int grid_size_x, grid_size_y;
         unsigned int status;
-    #
     protected:
         void on_okay_btn_clicked();
         void on_cancel_btn_clicked();
