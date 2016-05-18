@@ -15,5 +15,4 @@ class HelloWorld : public Gtk::Window
         void on_button_clicked(); 
         Gtk::Button m_button;
 };
-
 #endif // GTKMM_EXAMPLE_HELLOWORLD_H
