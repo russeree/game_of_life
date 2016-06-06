@@ -63,13 +63,15 @@ int GameOfLifeSeed::add_temp_menu_child(unsigned int child_id){
     this -> temp_menu -> children.push_back(child_id);
     return 0;
 }
+
 int GameOfLifeSeed::set_temp_menu_id(unsigned int id)
 {
     this -> temp_menu -> id = id;
     return 0;
 }
 
-int GameOfLifeSeed::set_temp_menu_text (std::string menu_text){
+int GameOfLifeSeed::set_temp_menu_text (std::string menu_text)
+{
     this -> temp_menu -> menu -> set_label(menu_text);
     return 0;
 }
@@ -88,3 +90,8 @@ int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> &childre
     return 0;
 }
 
+/* GoL Menu Item Functions */
+void GameOfLifeSeed::GolMenuItem::operator+(const unsigned int child_id)
+{
+    this -> children.push_back(child_id);
+}

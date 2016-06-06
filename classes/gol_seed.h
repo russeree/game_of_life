@@ -21,7 +21,8 @@ class GameOfLifeSeed : public Gtk::Window
         int status;
     // Class Specific Types
     protected:
-        class GolMenuItem{
+        class GolMenuItem
+        {
             public:
                 unsigned int id;
                 std::vector<unsigned int> children;
@@ -29,7 +30,9 @@ class GameOfLifeSeed : public Gtk::Window
                 Gtk::MenuItem *menu;
                 GolMenuItem();
                 virtual ~GolMenuItem();
-            };
+                // Overloading Operators
+                void operator+(const unsigned int child_id);
+        };
     // Constructors
     public:
         GameOfLifeSeed();
