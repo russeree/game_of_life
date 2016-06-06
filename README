@@ -2,7 +2,7 @@
 Description: An implementation of conways game of life that 
 supports parallel processing. Essentialy there are 24 of these
 games running at the same time. 8 games per channel with 3 
-total channels
+total channels. 
 
 ~!Russeree!~
 

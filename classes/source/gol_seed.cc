@@ -10,7 +10,7 @@
  * Desc: Game of life configuration window openiong
  *     ~ and management of initial seed. Upon consturction a window
  *     ~ the close button destroys the window but the class varibles
- *     ~ remain in memory to be accessed by the generation algorythm
+ *     ~ remain in memory to be accessed by the generation algorithm
  ***/
 
 // Game of Life Seed Gen: Class Constructor
