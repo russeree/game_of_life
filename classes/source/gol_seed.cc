@@ -106,5 +106,5 @@ GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigne
 }
 
 /*** LOGS ***
- * June 6 2016: Added many class functions and added minimal ad-hoc polymorphism
+ * June 6 2016: Added many class functions and added minimal ad-hoc polymorphism.
  *** LOGS ***/
