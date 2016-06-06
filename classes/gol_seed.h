@@ -31,7 +31,7 @@ class GameOfLifeSeed : public Gtk::Window
                 GolMenuItem();
                 virtual ~GolMenuItem();
                 // Overloading Operators
-                void operator+(const unsigned int child_id);
+                GolMenuItem operator+(const unsigned int child_id);
         };
     // Constructors
     public:

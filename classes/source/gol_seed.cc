@@ -91,7 +91,8 @@ int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> &childre
 }
 
 /* GoL Menu Item Functions */
-void GameOfLifeSeed::GolMenuItem::operator+(const unsigned int child_id)
+GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigned int child_id)
 {
     this -> children.push_back(child_id);
+    return *this;
 }
