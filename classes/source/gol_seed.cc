@@ -13,6 +13,7 @@
  *     ~ remain in memory to be accessed by the generation algorythm
  ***/
 
+// Game of Life Seed Gen: Class Constructor
 GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
 {
     temp_menu = new GolMenuItem;
@@ -32,50 +33,56 @@ GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
     // Display all the items
     show_all();
 }
-
+// Game of Life Seed Gen: Single Menu Item Class Constructor
 GameOfLifeSeed::GolMenuItem::GolMenuItem()
 {
     this -> menu = new Gtk::MenuItem;
 }
-
+// Game of Life Seed Gen: Class Destructor
 GameOfLifeSeed::~GameOfLifeSeed()
 {
     delete this -> temp_menu;
 }
-
+// Game of Life Seed Gen: Class Destructor
 GameOfLifeSeed::GolMenuItem::~GolMenuItem()
 {
     delete this -> menu;
 }
-
+// Game of Life Seed Gen: Okay Button Clicked Signal Funcyion
 void GameOfLifeSeed::on_okay_btn_clicked()
 {
     std::cout << "Settings Saved.";
 }
-
+// Game of Life Seed Gen: Cancel Button Clicked Signal Funcyion
 void GameOfLifeSeed::on_cancel_btn_clicked()
 {
     std::cout << "Settings Unsaved.";
     close();
 }
-
+// Game of Life Seed Gen: Add a child to the temporary menu item class varible
 int GameOfLifeSeed::add_temp_menu_child(unsigned int child_id){
     this -> temp_menu -> children.push_back(child_id);
     return 0;
 }
-
+// Game of Life Seed Gen: Set the temporary menu id
 int GameOfLifeSeed::set_temp_menu_id(unsigned int id)
 {
     this -> temp_menu -> id = id;
     return 0;
 }
-
+// Game of Life Seed Gen: Set the temporary menu text
 int GameOfLifeSeed::set_temp_menu_text (std::string menu_text)
 {
     this -> temp_menu -> menu -> set_label(menu_text);
     return 0;
 }
-
+// Game of Life Seed Gen: Publish a menu to the menu vector uing a game of life menu item
+int GameOfLifeSeed::add_menu(GolMenuItem &menu_item)
+{
+    this -> menu_items.push_back(menu_item);
+    return 0;
+}
+// Game of Life Seed Gen: Publish a menu item using parameters.
 int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> &children, std::string menu_text)
 {
     // Create a Menu Pack item
@@ -91,6 +98,7 @@ int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> &childre
 }
 
 /* GoL Menu Item Functions */
+// Add a menu id with the + operator
 GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigned int child_id)
 {
     this -> children.push_back(child_id);
