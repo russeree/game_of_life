@@ -104,3 +104,7 @@ GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigne
     this -> children.push_back(child_id);
     return *this;
 }
+
+/*** LOGS ***
+ * June 6 2016: Added many class functions and added minimal ad-hoc polymorphism
+ *** LOGS ***/
