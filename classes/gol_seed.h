@@ -1,11 +1,11 @@
-#ifndef GAME_OF_LIFE_SEED
-#define GAME_OF_LIFE_SEED
-
 /***
  * Creator: Reese Russell
  * Class: GameOfLifeSeed
  * Desc: A game of life Seed State
  ***/
+
+#ifndef GAME_OF_LIFE_SEED
+#define GAME_OF_LIFE_SEED
 
 #include <string>
 #include <vector>
@@ -19,6 +19,7 @@
 class GameOfLifeSeed : public Gtk::Window
 {
     public:
+        int debug;
         int status;
     // Class Specific Types
     protected:
@@ -34,10 +35,13 @@ class GameOfLifeSeed : public Gtk::Window
                 // Overloading Operators (+)
                 GolMenuItem operator+(const unsigned int child_id);
         };
-    // Constructors
+    // Constructors and Class Specific functions
     public:
         GameOfLifeSeed();
         virtual ~GameOfLifeSeed();
+        int enable_debug(void);
+        int enable_debug(int level);
+        int disable_debug(void);
     // Signals and Events
     protected:
         bool load_from_file;

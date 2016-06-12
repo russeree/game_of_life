@@ -1,9 +1,3 @@
-#include "gol_seed.h"
-
-#include <iostream>
-#include <string>
-#include <vector>
-
 /***
  * Creator: Reese Russell
  * Class: GameOfLifeSeed
@@ -13,9 +7,16 @@
  *     ~ remain in memory to be accessed by the generation algorithm
  ***/
 
+#include "gol_seed.h"
+
+#include <iostream>
+#include <string>
+#include <vector>
+
 // Game of Life Seed Gen: Class Constructor
 GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
 {
+    debug = 0;
     // Construct a temporary menu class
     temp_menu = new GolMenuItem;
     // Construct Some Menus
@@ -57,6 +58,24 @@ GameOfLifeSeed::~GameOfLifeSeed()
 // Game of Life Seed Gen: Class Destructor
 GameOfLifeSeed::GolMenuItem::~GolMenuItem()
 {
+}
+// Enable the debug mode level 1
+int GameOfLifeSeed::enable_debug(void)
+{
+    this -> debug = 1;
+    return 0;
+}
+// Sets the debug level
+int GameOfLifeSeed::enable_debug(int level)
+{
+    this -> debug = level;
+    return 0;
+}
+// Sets the debug level to 0 effectively disabling it
+int GameOfLifeSeed::disable_debug(void)
+{
+    this -> debug = 0;
+    return 0;
 }
 // Game of Life Seed Gen: Okay Button Clicked Signal Function
 void GameOfLifeSeed::on_okay_btn_clicked()
