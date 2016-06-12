@@ -42,11 +42,6 @@ class GameOfLifeSeed : public Gtk::Window
         int enable_debug(void);
         int enable_debug(int level);
         int disable_debug(void);
-    // Signals and Events
-    protected:
-        bool load_from_file;
-        bool load_from_grid;
-        unsigned int grid_size_x, grid_size_y;
     // Buttons and Signals
     protected:
         void on_okay_btn_clicked();
