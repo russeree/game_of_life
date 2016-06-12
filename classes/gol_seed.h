@@ -53,14 +53,14 @@ class GameOfLifeSeed : public Gtk::Window
     protected:
         Gtk::MenuBar menu_bar;
         std::string menu_text;
-        std::vector<GolMenuItem> menu_items;
+        std::vector<GolMenuItem*> menu_items;
         std::vector<unsigned int> menu_children;
         GolMenuItem *temp_menu;
         int add_temp_menu_child(unsigned int child_id);
         int set_temp_menu_id(unsigned int id);
         int set_temp_menu_text(std::string menu_text);
-        int add_menu(GolMenuItem &menu_item);
-        int add_menu(unsigned int id, std::vector<unsigned int> &children, std::string menu_text);
+        int add_menu(GolMenuItem *menu_item);
+        int add_menu(unsigned int id, std::vector<unsigned int> children, std::string menu_text);
     // Layout Containers
     protected:
         Gtk::VBox main_layout;

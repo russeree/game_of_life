@@ -18,13 +18,12 @@ GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
 {
     // Construct a temporary menu class
     temp_menu = new GolMenuItem;
-    temp_menu -> id = 0;
-    temp_menu -> children = {1,2,3};
-    temp_menu -> menu_text = "File";
-    temp_menu -> menu -> set_label(temp_menu -> menu_text);
-    status = add_menu(*temp_menu);
+    // Construct Some Menus
+    status = add_menu(0,{123},"File");
+    status = add_menu(1,{123},"Quit");
     // Add the Meny to the menubar from the vector
-    menu_bar.add(*menu_items[0].menu);
+    menu_bar.add(*menu_items[0] -> menu);
+    menu_bar.add(*menu_items[1] -> menu);
     // Window Propteries
     set_border_width(10);
     set_title("Game of Life Seed Generator");
@@ -49,12 +48,15 @@ GameOfLifeSeed::GolMenuItem::GolMenuItem()
 // Game of Life Seed Gen: Class Destructor
 GameOfLifeSeed::~GameOfLifeSeed()
 {
+    for (unsigned i; i < menu_items.size(); i++){
+        // Clean up all of those menu items that were created;
+        delete menu_items[i];
+        }
     delete this -> temp_menu;
 }
 // Game of Life Seed Gen: Class Destructor
 GameOfLifeSeed::GolMenuItem::~GolMenuItem()
 {
-    delete this -> menu;
 }
 // Game of Life Seed Gen: Okay Button Clicked Signal Function
 void GameOfLifeSeed::on_okay_btn_clicked()
@@ -85,22 +87,22 @@ int GameOfLifeSeed::set_temp_menu_text (std::string menu_text)
     return 0;
 }
 // Game of Life Seed Gen: Publish a menu to the menu vector uing a game of life menu item
-int GameOfLifeSeed::add_menu(GolMenuItem &menu_item)
+int GameOfLifeSeed::add_menu(GolMenuItem *menu_item)
 {
     this -> menu_items.push_back(menu_item);
     return 0;
 }
 // Game of Life Seed Gen: Publish a menu item using parameters.
-int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> &children, std::string menu_text)
+int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> children, std::string menu_text)
 {
     // Create a Menu Pack item
-    GolMenuItem *temp_menu = new GolMenuItem();
+    GolMenuItem *tmp_menu = new GolMenuItem();
     // Setup the Menu Pack
-    temp_menu -> id = id;
-    temp_menu -> children = children;
-    temp_menu -> menu -> set_label(menu_text);
+    tmp_menu -> id = id;
+    tmp_menu -> children = children;
+    tmp_menu -> menu -> set_label(menu_text);
     // Now append the menu pack to the end of the Class Vector
-    this -> menu_items.push_back(*temp_menu);
+    menu_items.push_back(tmp_menu);
     //Return a success status for completeion of this function
     return 0;
 }
