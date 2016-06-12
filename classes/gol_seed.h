@@ -16,6 +16,8 @@
 #include <gtkmm/menubar.h>
 #include <gtkmm/menuitem.h>
 
+#include "gol_config_state"
+
 class GameOfLifeSeed : public Gtk::Window
 {
     public:

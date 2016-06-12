@@ -14,6 +14,16 @@ class GolConfigState{
     public:
         GolConfigState();
         virtual ~GolConfigState();
+    public:
+        enum GolConfigStateStatus {
+            success = 0,
+            failure = 1
+        };
+        enum SeedingMethods {
+            load_from_image,
+            new_drawing,
+            previous_drawing
+        };
     protected:
         int seed_method;
         int channels;

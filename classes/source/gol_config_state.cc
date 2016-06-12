@@ -7,8 +7,13 @@
 
 GolConfigState::GolConfigState()
 {
+//  this -> status = static_cast<int>(GolConfigStateStatus.success);
 }
 
 GolConfigState::~GolConfigState()
 {
 }
+
+/*** LOGS ***
+ * 2016 June 12 : Initial Creation of Class
+ *** LOGS ***/
