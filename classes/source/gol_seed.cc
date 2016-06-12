@@ -108,6 +108,7 @@ int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> children
 }
 
 /* GoL Menu Item Functions */
+
 // Add a menu id with the + operator
 GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigned int child_id)
 {
@@ -116,5 +117,6 @@ GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigne
 }
 
 /*** LOGS ***
- * June 6 2016: Added many class functions and added minimal ad-hoc polymorphism.
+ * 2016 June 6  : Added many class functions and added minimal ad-hoc polymorphism.
+ * 2016 June 12 : Compelte the menu containment vecotr.
  *** LOGS ***/
