@@ -1,5 +1,6 @@
 #ifndef GAME_OF_LIFE_SEED
 #define GANE_OF_LIFE_SEED
+
 /***
  * Creator: Reese Russell
  * Class: GameOfLifeSeed

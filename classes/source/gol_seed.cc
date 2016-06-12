@@ -16,7 +16,15 @@
 // Game of Life Seed Gen: Class Constructor
 GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
 {
+    // Construct a temporary menu class
     temp_menu = new GolMenuItem;
+    temp_menu -> id = 0;
+    temp_menu -> children = {1,2,3};
+    temp_menu -> menu_text = "File";
+    temp_menu -> menu -> set_label(temp_menu -> menu_text);
+    status = add_menu(*temp_menu);
+    // Add the Meny to the menubar from the vector
+    menu_bar.add(*menu_items[0].menu);
     // Window Propteries
     set_border_width(10);
     set_title("Game of Life Seed Generator");
@@ -48,7 +56,7 @@ GameOfLifeSeed::GolMenuItem::~GolMenuItem()
 {
     delete this -> menu;
 }
-// Game of Life Seed Gen: Okay Button Clicked Signal Funcyion
+// Game of Life Seed Gen: Okay Button Clicked Signal Function
 void GameOfLifeSeed::on_okay_btn_clicked()
 {
     std::cout << "Settings Saved.";
