@@ -1,10 +1,13 @@
+
 /***
  * Creator: Reese Russell
- * Class: GameOfLifeSeed
+ * Class: GolSeed
  * Desc: Game of life configuration window openiong
  *     ~ and management of initial seed. Upon consturction a window
  *     ~ the close button destroys the window but the class varibles
  *     ~ remain in memory to be accessed by the generation algorithm
+ *     ~ most of this code could be put in another class and will be in
+ *     ~ the fiture.
  ***/
 
 #include "gol_seed.h"
@@ -14,7 +17,7 @@
 #include <vector>
 
 // Game of Life Seed Gen: Class Constructor
-GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
+GolSeed::GolSeed(): okay_btn("Okay"), cancel_btn("Cancel")
 {
     status = 0;
     debug = 0;
@@ -33,8 +36,8 @@ GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
     // Add the Button Contailer
     add(main_layout);
     // Button Signals
-    okay_btn.signal_clicked().connect(sigc::mem_fun(*this, &GameOfLifeSeed::on_okay_btn_clicked));
-    cancel_btn.signal_clicked().connect(sigc::mem_fun(*this, &GameOfLifeSeed::on_cancel_btn_clicked));
+    okay_btn.signal_clicked().connect(sigc::mem_fun(*this, &GolSeed::on_okay_btn_clicked));
+    cancel_btn.signal_clicked().connect(sigc::mem_fun(*this, &GolSeed::on_cancel_btn_clicked));
     // Pack buttons in the container
     main_layout.pack_start(menu_bar, Gtk::PACK_SHRINK);
     main_layout.pack_start(commit_btn_container);
@@ -44,12 +47,12 @@ GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
     show_all();
 }
 // Game of Life Seed Gen: Single Menu Item Class Constructor
-GameOfLifeSeed::GolMenuItem::GolMenuItem()
+GolSeed::GolMenuItem::GolMenuItem()
 {
     this -> menu = new Gtk::MenuItem;
 }
 // Game of Life Seed Gen: Class Destructor
-GameOfLifeSeed::~GameOfLifeSeed()
+GolSeed::~GolSeed()
 {
     for (unsigned i; i < menu_items.size(); i++){
         // Clean up all of those menu items that were created;
@@ -58,63 +61,63 @@ GameOfLifeSeed::~GameOfLifeSeed()
     delete this -> temp_menu;
 }
 // Game of Life Seed Gen: Class Destructor
-GameOfLifeSeed::GolMenuItem::~GolMenuItem()
+GolSeed::GolMenuItem::~GolMenuItem()
 {
 }
 // Enable the debug mode level 1
-int GameOfLifeSeed::enable_debug(void)
+int GolSeed::enable_debug(void)
 {
     this -> debug = 1;
     return 0;
 }
 // Sets the debug level
-int GameOfLifeSeed::enable_debug(int level)
+int GolSeed::enable_debug(int level)
 {
     this -> debug = level;
     return 0;
 }
 // Sets the debug level to 0 effectively disabling it
-int GameOfLifeSeed::disable_debug(void)
+int GolSeed::disable_debug(void)
 {
     this -> debug = 0;
     return 0;
 }
 // Game of Life Seed Gen: Okay Button Clicked Signal Function
-void GameOfLifeSeed::on_okay_btn_clicked()
+void GolSeed::on_okay_btn_clicked()
 {
     std::cout << "Settings Saved.";
 }
 // Game of Life Seed Gen: Cancel Button Clicked Signal Funcyion
-void GameOfLifeSeed::on_cancel_btn_clicked()
+void GolSeed::on_cancel_btn_clicked()
 {
     std::cout << "Settings Unsaved.";
     close();
 }
 // Game of Life Seed Gen: Add a child to the temporary menu item class varible
-int GameOfLifeSeed::add_temp_menu_child(unsigned int child_id){
+int GolSeed::add_temp_menu_child(unsigned int child_id){
     this -> temp_menu -> children.push_back(child_id);
     return 0;
 }
 // Game of Life Seed Gen: Set the temporary menu id
-int GameOfLifeSeed::set_temp_menu_id(unsigned int id)
+int GolSeed::set_temp_menu_id(unsigned int id)
 {
     this -> temp_menu -> id = id;
     return 0;
 }
 // Game of Life Seed Gen: Set the temporary menu text
-int GameOfLifeSeed::set_temp_menu_text (std::string menu_text)
+int GolSeed::set_temp_menu_text (std::string menu_text)
 {
     this -> temp_menu -> menu -> set_label(menu_text);
     return 0;
 }
 // Game of Life Seed Gen: Publish a menu to the menu vector uing a game of life menu item
-int GameOfLifeSeed::add_menu(GolMenuItem *menu_item)
+int GolSeed::add_menu(GolMenuItem *menu_item)
 {
     this -> menu_items.push_back(menu_item);
     return 0;
 }
 // Game of Life Seed Gen: Publish a menu item using parameters.
-int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> children, std::string menu_text)
+int GolSeed::add_menu(unsigned int id, std::vector<unsigned int> children, std::string menu_text)
 {
     // Create a Menu Pack item
     GolMenuItem *tmp_menu = new GolMenuItem();
@@ -131,7 +134,7 @@ int GameOfLifeSeed::add_menu(unsigned int id, std::vector<unsigned int> children
 /* GoL Menu Item Functions */
 
 // Add a menu id with the + operator
-GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigned int child_id)
+GolSeed::GolMenuItem GolSeed::GolMenuItem::operator+(const unsigned int child_id)
 {
     this -> children.push_back(child_id);
     return *this;
@@ -141,3 +144,4 @@ GameOfLifeSeed::GolMenuItem GameOfLifeSeed::GolMenuItem::operator+(const unsigne
  * 2016 June 6  : Added many class functions and added minimal ad-hoc polymorphism.
  * 2016 June 12 : Compelte the menu containment vecotr.
  *** LOGS ***/
+

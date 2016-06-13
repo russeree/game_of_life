@@ -1,6 +1,6 @@
 /***
  * Creator: Reese Russell
- * Class: GameOfLifeSeed
+ * Class: GolSeed
  * Desc: A game of life Seed State
  ***/
 
@@ -18,7 +18,7 @@
 
 #include "gol_config_state.h"
 
-class GameOfLifeSeed : public Gtk::Window
+class GolSeed : public Gtk::Window
 {
     public:
         int debug;
@@ -39,8 +39,8 @@ class GameOfLifeSeed : public Gtk::Window
         };
     // Constructors and Class Specific functions
     public:
-        GameOfLifeSeed();
-        virtual ~GameOfLifeSeed();
+        GolSeed();
+        virtual ~GolSeed();
         int enable_debug(void);
         int enable_debug(int level);
         int disable_debug(void);
