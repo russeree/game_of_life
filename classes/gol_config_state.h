@@ -7,22 +7,25 @@
 #ifndef GAME_OF_LIFE_CONFIG_STATE
 #define GAME_OF_LIFE_CONFIG_STATE
 
+namespace enumGolConfigStateStatus{
+    enum GolConfigStateStatus{
+        success,
+        failure
+    };
+}
+
 class GolConfigState{
     protected:
         int status;
         int debug;
     public:
         GolConfigState();
+        GolConfigState(int debug_lvl);
         virtual ~GolConfigState();
     public:
-        enum GolConfigStateStatus {
+        enum golConfigStateStatus {
             success = 0,
             failure = 1
-        };
-        enum SeedingMethods {
-            load_from_image,
-            new_drawing,
-            previous_drawing
         };
     protected:
         int seed_method;

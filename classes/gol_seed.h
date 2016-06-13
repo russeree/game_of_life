@@ -16,7 +16,7 @@
 #include <gtkmm/menubar.h>
 #include <gtkmm/menuitem.h>
 
-#include "gol_config_state"
+#include "gol_config_state.h"
 
 class GameOfLifeSeed : public Gtk::Window
 {
@@ -66,5 +66,7 @@ class GameOfLifeSeed : public Gtk::Window
     protected:
         Gtk::VBox main_layout;
         Gtk::Box commit_btn_container;
+    // Internals
+    GolConfigState *state;
 };
 #endif

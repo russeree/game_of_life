@@ -16,12 +16,14 @@
 // Game of Life Seed Gen: Class Constructor
 GameOfLifeSeed::GameOfLifeSeed(): okay_btn("Okay"), cancel_btn("Cancel")
 {
+    status = 0;
     debug = 0;
-    // Construct a temporary menu class
-    temp_menu = new GolMenuItem;
+    // Construct classes
+    temp_menu = new GolMenuItem();
+    state = new GolConfigState();
     // Construct Some Menus
     status = add_menu(0,{123},"File");
-    status = add_menu(1,{123},"Quit");
+    status = add_menu(1,{23},"Edit");
     // Add the Meny to the menubar from the vector
     menu_bar.add(*menu_items[0] -> menu);
     menu_bar.add(*menu_items[1] -> menu);

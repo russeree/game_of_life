@@ -5,11 +5,19 @@
  ***/
 #include "gol_config_state.h"
 
+#include <iostream>
+
 GolConfigState::GolConfigState()
 {
-//  this -> status = static_cast<int>(GolConfigStateStatus.success);
+    this -> debug = 0;
+    this -> status = (int)enumGolConfigStateStatus::success;
 }
 
+GolConfigState::GolConfigState(int debug_lvl)
+{
+    this -> debug = debug_lvl;
+    this -> status = (int)enumGolConfigStateStatus::success;
+}
 GolConfigState::~GolConfigState()
 {
 }
