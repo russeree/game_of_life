@@ -17,6 +17,7 @@ class GolDrawSeed : public Gtk::Window
     public:
         GolDrawSeed();
         virtual ~GolDrawSeed();
-
+    protected:
+        int state;
 };
 #endif
