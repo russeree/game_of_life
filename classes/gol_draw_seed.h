@@ -38,5 +38,8 @@ class GolDrawSeed : public Gtk::Window
     protected:
         int status;
         int debug;
+    protected:
+        Gtk::Vbox main_layout;
+        Gtk::Box release_btn_container;
 };
 #endif
