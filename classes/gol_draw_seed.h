@@ -19,6 +19,7 @@ namespace enumGolDrawSeedStatus{
         initialized
     };
 }
+
 class GolDrawSeed : public Gtk::Window
 {
     public:
