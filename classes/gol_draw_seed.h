@@ -11,7 +11,13 @@
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
 #include <gtkmm/menuitem,h>
-
+namespace enumGolDrawSeedStatus{
+    enum golDrawSeedStatus{
+        success,
+        failure,
+        initialized
+    }
+}
 class GolDrawSeed : public Gtk::Window
 {
     public:
