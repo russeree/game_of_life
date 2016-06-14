@@ -12,11 +12,11 @@
 GolDrawSeed::GolDrawSeed()
 {
     this -> status = (int)enumGolDrawSeedStatus::initialized;
+    this -> debug = (int)enumGolDrawSeedDebug::none;
 }
 
 // Game of Life Seed Drawign Deconstructor
 GolDrawSeed::~GolDrawSeed()
 {
-
 }
 
