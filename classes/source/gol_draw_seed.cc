@@ -8,6 +8,13 @@
 
 #include <iostream>
 
+// Game of Life Seed Drawing  Constructor
 GolDrawSeed::GolDrawSeed(){
     this -> status = (int)enumGolDrawSeedStatus::initialized;
 }
+
+// Game of Life Seed Drawign Deconstructor
+GolDrawSeed::~GolDrawSeed(){
+
+}
+
