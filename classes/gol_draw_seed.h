@@ -10,13 +10,14 @@
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
-#include <gtkmm/menuitem,h>
+#include <gtkmm/menuitem.h>
+
 namespace enumGolDrawSeedStatus{
     enum golDrawSeedStatus{
         success,
         failure,
         initialized
-    }
+    };
 }
 class GolDrawSeed : public Gtk::Window
 {
@@ -24,6 +25,6 @@ class GolDrawSeed : public Gtk::Window
         GolDrawSeed();
         virtual ~GolDrawSeed();
     protected:
-        int state;
+        int status;
 };
 #endif
