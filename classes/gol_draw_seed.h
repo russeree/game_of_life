@@ -36,11 +36,15 @@ class GolDrawSeed : public Gtk::Window
     public:
         GolDrawSeed();
         virtual ~GolDrawSeed();
+    // Class Configuration
     protected:
         int status;
         int debug;
+    // Window Layout
     protected:
-        Gtk::Vbox main_layout;
+        Gtk::VBox main_layout;
         Gtk::Box exit_methds_container;
+    // Drawing Utilities
+        Gtk::DrawingArea visual_seed;
 };
 #endif
