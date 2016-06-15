@@ -10,6 +10,7 @@
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
+#include <gtkmm/drawingarea.h>
 
 namespace enumGolDrawSeedStatus
 {
@@ -40,6 +41,6 @@ class GolDrawSeed : public Gtk::Window
         int debug;
     protected:
         Gtk::Vbox main_layout;
-        Gtk::Box release_btn_container;
+        Gtk::Box exit_methds_container;
 };
 #endif
