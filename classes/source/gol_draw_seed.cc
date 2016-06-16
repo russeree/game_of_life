@@ -14,11 +14,14 @@ GolDrawSeed::GolDrawSeed()
     // Set the default class states
     this -> status = (int)enumGolDrawSeedStatus::initialized;
     this -> debug = (int)enumGolDrawSeedDebug::none;
-
+    // Construct the drawing window.
+    visual_seed_dw = new Gtk::DrawingArea;
+//  this -> add(this -> visual_seed_dw);
 }
 
 // Game of Life Seed Drawign Deconstructor
 GolDrawSeed::~GolDrawSeed()
 {
+    delete this -> visual_seed_dw;
 }
 
