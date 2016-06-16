@@ -11,8 +11,10 @@
 // Game of Life Seed Drawing  Constructor
 GolDrawSeed::GolDrawSeed()
 {
+    // Set the default class states
     this -> status = (int)enumGolDrawSeedStatus::initialized;
     this -> debug = (int)enumGolDrawSeedDebug::none;
+
 }
 
 // Game of Life Seed Drawign Deconstructor

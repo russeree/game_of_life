@@ -1,7 +1,8 @@
 /***
  * Creator: Reese Russell
  * Class: GolDrawSeed
- * Desc: A class to open a window and draw a seed
+ * Desc: A class to open a window and allow a user
+ * to draw a seed.
  ***/
 
 #ifndef GAME_OF_LIFE_SEED_DRAW
@@ -12,6 +13,7 @@
 #include <gtkmm/window.h>
 #include <gtkmm/drawingarea.h>
 
+// Drawing Seed Status
 namespace enumGolDrawSeedStatus
 {
     enum golDrawSeedStatus
@@ -22,6 +24,7 @@ namespace enumGolDrawSeedStatus
     };
 }
 
+// Drawing Seed Debug Levels
 namespace enumGolDrawSeedDebug
 {
     enum golDrawSeedDebug
@@ -33,6 +36,7 @@ namespace enumGolDrawSeedDebug
     };
 }
 
+// Main Class: Game of Life Draw Seed
 class GolDrawSeed : public Gtk::Window
 {
     public:
