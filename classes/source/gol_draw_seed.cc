@@ -15,8 +15,10 @@ GolDrawSeed::GolDrawSeed()
     this -> status = (int)enumGolDrawSeedStatus::initialized;
     this -> debug = (int)enumGolDrawSeedDebug::none;
     // Construct the drawing window.
-    visual_seed_dw = new Gtk::DrawingArea;
-//  this -> add(this -> visual_seed_dw);
+    this -> visual_seed_dw = new Gtk::DrawingArea;
+    this -> main_layout = new Gtk::VBox;
+    this -> exit_methds_container = new Gtk::Box;
+//    this -> add(this -> visual_seed_dw);
 }
 
 // Game of Life Seed Drawign Deconstructor
