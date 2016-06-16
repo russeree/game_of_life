@@ -17,7 +17,9 @@
 #include <gtkmm/menuitem.h>
 
 #include "gol_config_state.h"
+#include "gol_draw_seed.h"
 
+// Game of Life Seed Main Class
 class GolSeed : public Gtk::Window
 {
     public:
@@ -68,5 +70,6 @@ class GolSeed : public Gtk::Window
         Gtk::Box commit_btn_container;
     // Internals
     GolConfigState *state;
+    GolDrawSeed *drawing_window;
 };
 #endif

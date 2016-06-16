@@ -85,6 +85,7 @@ int GolSeed::disable_debug(void)
 // Game of Life Seed Gen: Okay Button Clicked Signal Function
 void GolSeed::on_okay_btn_clicked()
 {
+    drawing_window = new GolDrawSeed;
     std::cout << "Settings Saved.";
 }
 // Game of Life Seed Gen: Cancel Button Clicked Signal Funcyion

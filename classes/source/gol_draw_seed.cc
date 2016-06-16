@@ -18,12 +18,16 @@ GolDrawSeed::GolDrawSeed()
     this -> visual_seed_dw = new Gtk::DrawingArea;
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
-//    this -> add(this -> visual_seed_dw);
+    this -> add (*visual_seed_dw);
+    // Show the widgets
+    this -> show_all();
 }
 
 // Game of Life Seed Drawign Deconstructor
 GolDrawSeed::~GolDrawSeed()
 {
+    delete this -> exit_methds_container;
+    delete this -> main_layout;
     delete this -> visual_seed_dw;
 }
 
