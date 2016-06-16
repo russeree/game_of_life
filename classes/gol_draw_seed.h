@@ -21,6 +21,7 @@ namespace enumGolDrawSeedStatus
         initialized
     };
 }
+
 namespace enumGolDrawSeedDebug
 {
     enum golDrawSeedDebug
@@ -31,6 +32,7 @@ namespace enumGolDrawSeedDebug
         verbose
     };
 }
+
 class GolDrawSeed : public Gtk::Window
 {
     public:
