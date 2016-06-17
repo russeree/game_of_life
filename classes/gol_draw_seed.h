@@ -36,7 +36,7 @@ namespace enumGolDrawSeedDebug
     };
 }
 
-// Main Class: Game of Life Draw Seed
+// Main Class: Game of Life Drawing seed.
 class GolDrawSeed : public Gtk::Window
 {
     public:
