@@ -46,6 +46,8 @@ class GolDrawSeed : public Gtk::Window
     protected:
         int status;
         int debug;
+    // Magiks
+    Glib::ustring window_title = "Game of Life Seed Drawing Editor";
     // Window Layout
     protected:
         Gtk::VBox *main_layout;

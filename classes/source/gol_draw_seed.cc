@@ -18,6 +18,7 @@ GolDrawSeed::GolDrawSeed()
     this -> visual_seed_dw = new Gtk::DrawingArea;
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
+    this -> set_title(this -> window_title);
     this -> add (*visual_seed_dw);
     // Show the widgets
     this -> show_all();
