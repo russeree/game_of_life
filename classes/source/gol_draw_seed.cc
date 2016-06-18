@@ -32,3 +32,10 @@ GolDrawSeed::~GolDrawSeed()
     delete this -> visual_seed_dw;
 }
 
+guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, int channels)
+{
+    unsigned int array_size = (x_size * y_size * channels);
+    guint8 *image = new guint8[array_size];
+    return image;
+}
+
