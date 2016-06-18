@@ -7,6 +7,7 @@
 #include "gol_draw_seed.h"
 
 #include <iostream>
+#include <stdlib.h>
 
 // Game of Life Seed Drawing  Constructor
 GolDrawSeed::GolDrawSeed()
@@ -36,6 +37,14 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
 {
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *image = new guint8[array_size];
+    for (int i = 0; i < y_size; i++)
+    {
+        for (int j = 0; j < x_size; j++)
+        {
+            unsigned int current_cell = ((y_size * i) + j);
+
+        }
+    }
     return image;
 }
 
