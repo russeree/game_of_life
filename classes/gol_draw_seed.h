@@ -12,6 +12,8 @@
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
 #include <gtkmm/drawingarea.h>
+#include <gdkmm/pixbuf.h>
+#include <glibmm/refptr.h>
 
 // Drawing Seed Status
 namespace enumGolDrawSeedStatus
@@ -53,6 +55,7 @@ class GolDrawSeed : public Gtk::Window
         Gtk::VBox *main_layout;
         Gtk::Box *exit_methds_container;
     // Drawing Utilities
+        guint8 *seed_img_raw_buf;
         Gtk::DrawingArea *visual_seed_dw;
     // Debug Functions
         guint8 *debug_image_gen (unsigned int x_size, unsigned int y_size, int channels);

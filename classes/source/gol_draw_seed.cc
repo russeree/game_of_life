@@ -7,7 +7,7 @@
 #include "gol_draw_seed.h"
 
 #include <iostream>
-#include <stdlib.h>
+#include <random>
 
 // Game of Life Seed Drawing  Constructor
 GolDrawSeed::GolDrawSeed()
@@ -19,8 +19,9 @@ GolDrawSeed::GolDrawSeed()
     this -> visual_seed_dw = new Gtk::DrawingArea;
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
-    this -> set_title(this -> window_title);
+    this -> set_title (this -> window_title);
     this -> add (*visual_seed_dw);
+    this -> seed_img_raw_buf = debug_image_gen(512,512,3);
     // Show the widgets
     this -> show_all();
 }
@@ -42,7 +43,7 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
         for (int j = 0; j < x_size; j++)
         {
             unsigned int current_cell = ((y_size * i) + j);
-
+            image[current_cell] = rand();
         }
     }
     return image;
