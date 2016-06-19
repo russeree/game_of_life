@@ -86,12 +86,12 @@ int GolSeed::disable_debug(void)
 void GolSeed::on_okay_btn_clicked()
 {
     drawing_window = new GolDrawSeed;
-    std::cout << "Settings Saved.";
+    std::cout << "Settings Saved.\n";
 }
 // Game of Life Seed Gen: Cancel Button Clicked Signal Funcyion
 void GolSeed::on_cancel_btn_clicked()
 {
-    std::cout << "Settings Unsaved.";
+    std::cout << "Settings Unsaved.\n";
     close();
 }
 // Game of Life Seed Gen: Add a child to the temporary menu item class varible

@@ -33,7 +33,7 @@ GolDrawSeed::GolDrawSeed()
             8,
             seed_img_width,
             seed_img_height,
-            128*3
+            3
         );
     // Show the widgets
     this -> show_all();
@@ -72,7 +72,7 @@ bool GolDrawSeed::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
     const int width = allocation.get_width();
     const int height = allocation.get_height();
     // Draw the image in the middle of the drawing area
-    Gdk::Cairo::set_source_pixbuf(cr, seed_img, 128 , 128);
+    Gdk::Cairo::set_source_pixbuf(cr, seed_img, 0, 0);
     cr -> paint();
 
     return true;
