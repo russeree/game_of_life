@@ -56,6 +56,7 @@ class GolDrawSeed : public Gtk::Window
         Gtk::Box *exit_methds_container;
     // Drawing Utilities
         guint8 *seed_img_raw_buf;
+        Glib::RefPtr<Gdk::Pixbuf> seed_img;
         Gtk::DrawingArea *visual_seed_dw;
     // Debug Functions
         guint8 *debug_image_gen (unsigned int x_size, unsigned int y_size, int channels);
