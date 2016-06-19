@@ -15,13 +15,26 @@ GolDrawSeed::GolDrawSeed()
     // Set the default class states
     this -> status = (int)enumGolDrawSeedStatus::initialized;
     this -> debug = (int)enumGolDrawSeedDebug::none;
+    // Setup the seed image size
+    this -> seed_img_height = 512;
+    this -> seed_img_width = 512;
     // Construct the drawing window.
     this -> visual_seed_dw = new Gtk::DrawingArea;
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
     this -> set_title (this -> window_title);
     this -> add (*visual_seed_dw);
-    this -> seed_img_raw_buf = debug_image_gen(512,512,3);
+    this -> seed_img_raw_buf = debug_image_gen(seed_img_width, seed_img_width, 3);
+    this -> seed_img = Gdk::Pixbuf::create_from_data
+        (
+            seed_img_raw_buf,
+            Gdk::COLORSPACE_RGB,
+            false,
+            8,
+            seed_img_width,
+            seed_img_height,
+            512
+        );
     // Show the widgets
     this -> show_all();
 }
@@ -49,3 +62,19 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
     return image;
 }
 
+
+bool GolDrawSeed::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
+{
+    if (!seed_img)
+    {
+        return false;
+    }
+    Gtk::Allocation allocation = get_allocation();
+    const int width = allocation.get_width();
+    const int height = allocation.get_height();
+    // Draw the image in the middle of the drawing area
+    Gdk::Cairo::set_source_pixbuf(cr, seed_img, 128 , 128);
+    cr -> paint();
+
+    return true;
+}
