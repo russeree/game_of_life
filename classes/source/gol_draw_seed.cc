@@ -18,13 +18,15 @@ GolDrawSeed::GolDrawSeed()
     // Setup the seed image size
     this -> seed_img_height = 512;
     this -> seed_img_width = 512;
+    this -> seed_img_channels = 3;
     // Construct the drawing window.
     this -> visual_seed_dw = new Gtk::DrawingArea;
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
     this -> set_title (this -> window_title);
+    this -> set_default_size(512, 512);
     this -> add (*visual_seed_dw);
-    this -> seed_img_raw_buf = debug_image_gen(seed_img_width, seed_img_width, 3);
+    this -> seed_img_raw_buf = debug_image_gen(seed_img_width, seed_img_height, seed_img_channels);
     this -> seed_img = Gdk::Pixbuf::create_from_data
         (
             seed_img_raw_buf,
@@ -33,7 +35,7 @@ GolDrawSeed::GolDrawSeed()
             8,
             seed_img_width,
             seed_img_height,
-            3
+            (seed_img_width)
         );
     // Show the widgets
     this -> show_all();
@@ -47,7 +49,7 @@ GolDrawSeed::~GolDrawSeed()
     delete this -> visual_seed_dw;
 }
 
-guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, int channels)
+guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
 {
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *image = new guint8[array_size];
@@ -55,8 +57,12 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
     {
         for (int j = 0; j < x_size; j++)
         {
-            unsigned int current_cell = ((y_size * i) + j);
-            image[current_cell] = rand();
+            for (int k = 0; k < channels; k++)
+            {
+                unsigned int current_cell = ((x_size * i) + (channels * j) + k);
+                image[current_cell] = rand();
+            }
+
         }
     }
     return image;

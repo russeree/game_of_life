@@ -4,6 +4,10 @@ supports parallel processing. Essentialy there are 24 of these
 games running at the same time. 8 games per channel with 3 
 total channels.
 
+Notes
+-------------
+Program uses GTKMM
+
 Youtube Videos
 -------------
 Got the first sub window working: https://youtu.be/pm1JCkUnYnU

@@ -60,12 +60,13 @@ class GolDrawSeed : public Gtk::Window
     // Seed Visualization
         int seed_img_height;
         int seed_img_width;
+        int seed_img_channels;
         guint8 *seed_img_raw_buf;
         Glib::RefPtr<Gdk::Pixbuf> seed_img;
         Gtk::DrawingArea *visual_seed_dw;
     // Seed Visualization Functions
         bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr) override;
     // Debug Functions
-        guint8 *debug_image_gen (unsigned int x_size, unsigned int y_size, int channels);
+        guint8 *debug_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels);
 };
 #endif
