@@ -33,7 +33,7 @@ GolDrawSeed::GolDrawSeed()
             8,
             seed_img_width,
             seed_img_height,
-            512
+            128*3
         );
     // Show the widgets
     this -> show_all();
@@ -61,7 +61,6 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
     }
     return image;
 }
-
 
 bool GolDrawSeed::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
