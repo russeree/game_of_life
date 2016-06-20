@@ -24,8 +24,7 @@ GolDrawSeed::GolDrawSeed()
     this -> seed_img_channels = 3;
     // Consturct the seed Image
     this -> seed_img_raw_buf = debug_image_gen(seed_img_width, seed_img_height, seed_img_channels);
-    this -> seed_img = Gdk::Pixbuf::create_from_data
-        (
+    this -> seed_img = Gdk::Pixbuf::create_from_data (
             seed_img_raw_buf,
             Gdk::COLORSPACE_RGB,
             false,
@@ -35,8 +34,8 @@ GolDrawSeed::GolDrawSeed()
             3
         );
     // Construct the drawing window.
-    this -> grid_x_size = new Gtk::HScale(0,512,10);
-    this -> visual_seed_dw = new SeedDrawingArea(this);
+    this -> grid_x_size = new Gtk::HScale (0,110,10);
+    this -> visual_seed_dw = new SeedDrawingArea (this);
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
     this -> drawing_container = new Gtk::Box;
