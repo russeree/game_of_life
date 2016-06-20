@@ -32,7 +32,7 @@ GolDrawSeed::GolDrawSeed()
             8,
             seed_img_width,
             seed_img_height,
-            seed_img_width
+            /*seed_img_width*/ 3
         );
     // Construct the drawing window.
     this -> visual_seed_dw = new SeedDrawingArea(this);
