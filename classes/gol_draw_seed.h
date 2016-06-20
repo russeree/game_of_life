@@ -12,6 +12,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
 #include <gtkmm/drawingarea.h>
+#include <gtkmm/hvscale.h>
 // Gdkmm Includes
 #include <gdkmm/pixbuf.h>
 #include <gdkmm/general.h>
@@ -44,7 +45,6 @@ namespace enumGolDrawSeedDebug
 // Main Class: Game of Life Drawing seed.
 class GolDrawSeed : public Gtk::Window
 {
-    int x = 1337;
     // Game of life Drawing Seed Class
     protected:
     class SeedDrawingArea : public Gtk::DrawingArea
@@ -67,6 +67,8 @@ class GolDrawSeed : public Gtk::Window
     // Magiks
         Glib::ustring window_title = "Game of Life Seed Drawing Editor";
     // Window Layout
+    protected:
+        Gtk::HScale *grid_x_size;
     protected:
         Gtk::VBox *main_layout;
         Gtk::Box *drawing_container;

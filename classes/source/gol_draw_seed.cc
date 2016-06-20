@@ -32,16 +32,22 @@ GolDrawSeed::GolDrawSeed()
             8,
             seed_img_width,
             seed_img_height,
-            /*seed_img_width*/ 3
+            3
         );
     // Construct the drawing window.
+    this -> grid_x_size = new Gtk::HScale(0,512,10);
     this -> visual_seed_dw = new SeedDrawingArea(this);
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
     this -> drawing_container = new Gtk::Box;
+    // Set Window Properties
     this -> set_title (this -> window_title);
+    this -> set_border_width(10);
     this -> set_default_size(window_size_x, window_size_y);
-    this -> add (*visual_seed_dw);
+    // Add the Visual Seed Drawing Widow to the Container
+    this -> drawing_container -> pack_start (*visual_seed_dw);
+    this -> drawing_container -> pack_start (*grid_x_size);
+    this -> add (*drawing_container);
     // Show the widgets
     this -> show_all();
 }
@@ -49,6 +55,7 @@ GolDrawSeed::GolDrawSeed()
 // Game of Life Seed Drawign Deconstructor
 GolDrawSeed::~GolDrawSeed()
 {
+    delete this -> grid_x_size;
     delete this -> exit_methds_container;
     delete this -> main_layout;
     delete this -> visual_seed_dw;
