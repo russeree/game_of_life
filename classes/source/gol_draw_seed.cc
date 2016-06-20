@@ -94,7 +94,7 @@ bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& 
 // Seed Drawing Area Constructor
 GolDrawSeed::SeedDrawingArea::SeedDrawingArea(GolDrawSeed *gol_draw_seed)
 {
-    // Set this to be of the type game of life drawing seed poiter
+    // Use 'this' as an arguement to access parent class;
     this -> gds_p = gol_draw_seed;
 }
 // Seed Drawing Area Deconstuctor
