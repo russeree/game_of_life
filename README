@@ -4,9 +4,14 @@ supports parallel processing. Essentialy there are 24 of these
 games running at the same time. 8 games per channel with 3 
 total channels.
 
+Purpose: Conway's Game of Life RGB is designed to be 
+my first GUI application and demonstate proper C++
+coding techniques such as OOP, memory managmenet, 
+polymorphism, and general knowlege.
+
 Notes
 -------------
-Program uses GTKMM
+Program uses GTKMM.
 
 Youtube Videos
 -------------
