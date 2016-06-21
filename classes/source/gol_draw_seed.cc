@@ -10,14 +10,14 @@
 #include <random>
 
 // Game of Life Seed Drawing  Constructor
-GolDrawSeed::GolDrawSeed()
+GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0))
 {
     // Setup Window Size
     this -> window_size_x = 512;
     this -> window_size_y = 512;
     // Set the default class states
     this -> status = (int)enumGolDrawSeedStatus::initialized;
-    this -> debug = (int)enumGolDrawSeedDebug::none;
+    this -> debug = (int)enumGolDrawSeedDebug::verbose;
     // Setup the seed image size
     this -> seed_img_height = 512;
     this -> seed_img_width = 512;
@@ -34,7 +34,8 @@ GolDrawSeed::GolDrawSeed()
             3
         );
     // Construct the drawing window.
-    this -> grid_x_size = new Gtk::HScale (0,110,10);
+    this -> grid_x_size = new Gtk::HScale (grid_x_size_adj_digits);
+    this -> grid_x_size_adj_digits -> signal_value_changed().connect(sigc::mem_fun(*this, &GolDrawSeed::on_grid_x_size_change));
     this -> visual_seed_dw = new SeedDrawingArea (this);
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
@@ -61,6 +62,7 @@ GolDrawSeed::~GolDrawSeed()
     delete this -> seed_img_raw_buf;
 }
 
+// Generates Debug Image (Consists of Random Pixels)
 guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
 {
     unsigned int array_size = (x_size * y_size * channels);
@@ -81,6 +83,7 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
     return image;
 }
 
+// Drawing Area Draw Function (Overide in Inner Seed Drawing Area Class)
 bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
     if (!gds_p -> seed_img)
@@ -95,6 +98,17 @@ bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& 
     cr -> paint();
 
     return true;
+}
+
+// Singal Handler for GTKMM Grid X Size Slider
+void GolDrawSeed::on_grid_x_size_change()
+{
+    this -> current_grid_x_size = this -> grid_x_size -> get_value();
+    if (this -> debug = (int)enumGolDrawSeedDebug::verbose)
+    {
+        std::cout << "The Slider Value is " << this -> current_grid_x_size << '\n';
+    }
+    this -> status = enumGolDrawSeedStatus::success;
 }
 
 // Seed Drawing Area Constructor
