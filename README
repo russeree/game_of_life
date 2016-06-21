@@ -1,13 +1,13 @@
 ------------------- Conway's Game of Life RGB -------------------
-Description: An implementation of conways game of life that 
-supports parallel processing. Essentialy there are 24 of these
+Description: An implementation of Conways game of life that 
+supports parallel processing. Essentially there are 24 of these
 games running at the same time. 8 games per channel with 3 
 total channels.
 
 Purpose: Conway's Game of Life RGB is designed to be 
-my first GUI application and demonstate proper C++
-coding techniques such as OOP, memory managmenet, 
-polymorphism, and general knowlege.
+my first GUI application and demonstrate proper C++
+coding techniques such as OOP, memory management, 
+polymorphism, and general knowledge.
 
 Notes
 -------------
@@ -19,4 +19,3 @@ Got the first sub window working: https://youtu.be/pm1JCkUnYnU
 Example for 6/18/2012: https://youtu.be/vnUf6e-iO00
 
 ~!Russeree!~
-
