@@ -72,6 +72,7 @@ GolDrawSeed::~GolDrawSeed()
 // Generates Debug Image (Consists of Random Pixels)
 guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
 {
+    // A section of memory is alocated here make sure to delete at some point
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *image = new guint8[array_size];
     for (int i = 0; i < y_size; i++)
@@ -124,7 +125,7 @@ void GolDrawSeed::on_grid_x_size_change()
 // Seed Drawing Area Constructor
 GolDrawSeed::SeedDrawingArea::SeedDrawingArea(GolDrawSeed *gol_draw_seed)
 {
-    // Use 'this' as an arguement to access parent class;
+    // Use 'this' as an arguement to access parent class: DO NOT USE DELETE!;
     this -> gds_p = gol_draw_seed;
 }
 // Seed Drawing Area Deconstuctor
