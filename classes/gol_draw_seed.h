@@ -76,10 +76,16 @@ class GolDrawSeed : public Gtk::Window
         Glib::ustring window_title = "Game of Life Seed Drawing Editor";
     // Horizontal Slider and  Accosiated Signals
     protected:
+        unsigned int grid_precision_decimals = 0;
         Gtk::HScale *grid_x_size;
+        Gtk::HScale *grid_y_size;
+        // These I would like to be pointers, Any advice is welcome.
         Glib::RefPtr<Gtk::Adjustment> grid_x_size_adj_digits;
+        Glib::RefPtr<Gtk::Adjustment> grid_y_size_adj_digits;
         void on_grid_x_size_change();
+        void on_grid_y_size_change();
         double current_grid_x_size;
+        double current_grid_y_size;
     // Layout
     protected:
         Gtk::VBox *main_layout;

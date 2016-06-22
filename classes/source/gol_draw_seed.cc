@@ -10,7 +10,9 @@
 #include <random>
 
 // Game of Life Seed Drawing Construction
-GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0))
+GolDrawSeed::GolDrawSeed() :
+    grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0)),
+    grid_y_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0))
 {
     // Setup Window Size
     this -> window_size_x = 512;
@@ -33,10 +35,14 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
             seed_img_height,
             seed_img_width
         );
-    // Construct the Drawing Winodw.
+    // Construct the Window Sliders
     this -> grid_x_size = new Gtk::HScale (grid_x_size_adj_digits);
-    this -> grid_x_size -> set_digits(0);
+    this -> grid_y_size = new Gtk::HScale (grid_y_size_adj_digits);
+    this -> grid_x_size -> set_digits(grid_precision_decimals);
+    this -> grid_y_size -> set_digits(grid_precision_decimals);
     this -> grid_x_size_adj_digits -> signal_value_changed().connect(sigc::mem_fun(*this, &GolDrawSeed::on_grid_x_size_change));
+    this -> grid_y_size_adj_digits -> signal_value_changed().connect(sigc::mem_fun(*this, &GolDrawSeed::on_grid_y_size_change));
+    // Construct the Drawing Window
     this -> visual_seed_dw = new SeedDrawingArea (this);
     // Generate the Window Elements
     this -> main_layout = new Gtk::VBox;
@@ -49,6 +55,7 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
     // Add the Visual Seed Drawing Widow to the Container
     this -> drawing_container -> pack_start (*visual_seed_dw);
     this -> drawing_container -> pack_start (*grid_x_size);
+    this -> drawing_container -> pack_start (*grid_y_size);
     this -> add (*drawing_container);
     // Show the widgets
     this -> show_all();
@@ -63,6 +70,7 @@ GolDrawSeed::~GolDrawSeed()
     }
     // Any time 'new' is used; !!!MAKE SURE TO CLEAN UP!!!
     delete this -> grid_x_size;
+    delete this -> grid_y_size;
     delete this -> drawing_container;
     delete this -> exit_methds_container;
     delete this -> main_layout;
@@ -112,13 +120,25 @@ bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& 
     return true;
 }
 
-// Singal Handler for GTKMM Grid X Size Slider
+// Chaing the Grid X Size Handler: This should be fixed later to take in a point of a Adjustment and a var
+// and store the result
 void GolDrawSeed::on_grid_x_size_change()
 {
     this -> current_grid_x_size = this -> grid_x_size -> get_value();
     if (this -> debug = (int)enumGolDrawSeedDebug::verbose)
     {
-        std::cout << "The Slider Value is " << this -> current_grid_x_size << '\n';
+        std::cout << "The X Size Slider Value is " << this -> current_grid_x_size << '\n';
+    }
+    this -> status = (int)enumGolDrawSeedStatus::success;
+}
+
+// Store the  Y Size Varible of the slider
+void GolDrawSeed::on_grid_y_size_change()
+{
+    this -> current_grid_y_size = this -> grid_y_size -> get_value();
+    if (this -> debug = (int)enumGolDrawSeedDebug::verbose)
+    {
+        std::cout << "The Y Size Slider Value is " << this -> current_grid_y_size << '\n';
     }
     this -> status = (int)enumGolDrawSeedStatus::success;
 }
