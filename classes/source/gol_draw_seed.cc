@@ -58,6 +58,7 @@ GolDrawSeed::~GolDrawSeed()
 {
     // Any time 'new' is used; !!!MAKE SURE TO CLEAN UP!!!
     delete this -> grid_x_size;
+    delete this -> drawing_container;
     delete this -> exit_methds_container;
     delete this -> main_layout;
     delete this -> visual_seed_dw;
