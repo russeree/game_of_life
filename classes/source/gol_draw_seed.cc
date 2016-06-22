@@ -80,6 +80,7 @@ guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, 
 
         }
     }
+    this -> status = enumGolDrawSeedStatus::success;
 
     return image;
 }
@@ -89,6 +90,7 @@ bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& 
 {
     if (!gds_p -> seed_img)
     {
+        this -> status = (int)enumGolDrawSeedStatus::failure;
         return false;
     }
     Gtk::Allocation allocation = get_allocation();
@@ -97,6 +99,7 @@ bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& 
     // Draw the image in the middle of the drawing area
     Gdk::Cairo::set_source_pixbuf(cr, gds_p -> seed_img, 0, 0);
     cr -> paint();
+    this -> status = (int)enumGolDrawSeedStatus::success;
 
     return true;
 }
@@ -109,7 +112,7 @@ void GolDrawSeed::on_grid_x_size_change()
     {
         std::cout << "The Slider Value is " << this -> current_grid_x_size << '\n';
     }
-    this -> status = enumGolDrawSeedStatus::success;
+    this -> status = (int)enumGolDrawSeedStatus::success;
 }
 
 // Seed Drawing Area Constructor

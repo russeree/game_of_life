@@ -49,13 +49,14 @@ class GolDrawSeed : public Gtk::Window
     // Game of life Drawing Seed Class
     protected:
         class SeedDrawingArea : public Gtk::DrawingArea
-    {
-        public:
-            GolDrawSeed *gds_p;
-            SeedDrawingArea(GolDrawSeed *gol_draw_seed);
-            virtual ~SeedDrawingArea();
-            bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr) override;
-    };
+        {
+            public:
+                int status;
+                GolDrawSeed *gds_p;
+                SeedDrawingArea(GolDrawSeed *gol_draw_seed);
+                virtual ~SeedDrawingArea();
+                bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr) override;
+        };
     public:
         GolDrawSeed();
         virtual ~GolDrawSeed();
