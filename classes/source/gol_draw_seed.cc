@@ -56,6 +56,10 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
 // Game of Life Seed Drawign Deconstructor
 GolDrawSeed::~GolDrawSeed()
 {
+    if (this -> debug == enumGolDrawSeedDebug::verbose)
+    {
+        std::cout << "Deconstructing Class -> GolDrawSeed";
+    }
     // Any time 'new' is used; !!!MAKE SURE TO CLEAN UP!!!
     delete this -> grid_x_size;
     delete this -> drawing_container;
