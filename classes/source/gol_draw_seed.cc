@@ -129,6 +129,18 @@ void GolDrawSeed::on_grid_x_size_change()
     {
         std::cout << "The X Size Slider Value is " << this -> current_grid_x_size << '\n';
     }
+
+    this -> seed_img_raw_buf = debug_image_gen(seed_img_width, seed_img_height, seed_img_channels);
+    this -> seed_img = Gdk::Pixbuf::create_from_data (
+            seed_img_raw_buf,
+            Gdk::COLORSPACE_RGB,
+            false,
+            8,
+            seed_img_width,
+            seed_img_height,
+            seed_img_width
+        );
+    this ->  visual_seed_dw -> queue_draw();
     this -> status = (int)enumGolDrawSeedStatus::success;
 }
 
