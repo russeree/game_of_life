@@ -33,10 +33,11 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
             seed_img_height,
             3
         );
-    // Construct the drawing window.
+    // Construct the Drawing Winodw.
     this -> grid_x_size = new Gtk::HScale (grid_x_size_adj_digits);
     this -> grid_x_size_adj_digits -> signal_value_changed().connect(sigc::mem_fun(*this, &GolDrawSeed::on_grid_x_size_change));
     this -> visual_seed_dw = new SeedDrawingArea (this);
+    // Generate the Window Elements
     this -> main_layout = new Gtk::VBox;
     this -> exit_methds_container = new Gtk::Box;
     this -> drawing_container = new Gtk::Box;
