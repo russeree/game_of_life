@@ -138,7 +138,7 @@ void GolDrawSeed::on_grid_x_size_change()
             8,
             seed_img_width,
             seed_img_height,
-            seed_img_width
+            3
         );
     this ->  visual_seed_dw -> queue_draw();
     this -> status = (int)enumGolDrawSeedStatus::success;
