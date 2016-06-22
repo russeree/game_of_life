@@ -31,7 +31,7 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
             8,
             seed_img_width,
             seed_img_height,
-            3
+            seed_img_width
         );
     // Construct the Drawing Winodw.
     this -> grid_x_size = new Gtk::HScale (grid_x_size_adj_digits);
