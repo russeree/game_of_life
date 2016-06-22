@@ -51,24 +51,30 @@ class GolDrawSeed : public Gtk::Window
         class SeedDrawingArea : public Gtk::DrawingArea
         {
             public:
+                // Status
                 int status;
+                // Pointer to an object of same type as outer class;
                 GolDrawSeed *gds_p;
+                // Constructor and Deconstructor
                 SeedDrawingArea(GolDrawSeed *gol_draw_seed);
                 virtual ~SeedDrawingArea();
+                // Override for the drawing window
                 bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr) override;
         };
     public:
+    // Constructors
         GolDrawSeed();
         virtual ~GolDrawSeed();
-        // Class Parametes
+    // Class Debugging Varibles
     protected:
         int status;
         int debug;
+    protected:
+    // Place all "Magic Values"" here please
         unsigned int window_size_x;
         unsigned int window_size_y;
-        // Magiks
         Glib::ustring window_title = "Game of Life Seed Drawing Editor";
-    // Slider and Signals
+    // Horizontal Slider and  Accosiated Signals
     protected:
         Gtk::HScale *grid_x_size;
         Glib::RefPtr<Gtk::Adjustment> grid_x_size_adj_digits;
