@@ -9,8 +9,8 @@
 #include <iostream>
 #include <random>
 
-// Game of Life Seed Drawing  Constructor
-GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0))
+// Game of Life Seed Drawing Construction
+GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0))
 {
     // Setup Window Size
     this -> window_size_x = 512;
@@ -35,6 +35,7 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
         );
     // Construct the Drawing Winodw.
     this -> grid_x_size = new Gtk::HScale (grid_x_size_adj_digits);
+    this -> grid_x_size -> set_digits(0);
     this -> grid_x_size_adj_digits -> signal_value_changed().connect(sigc::mem_fun(*this, &GolDrawSeed::on_grid_x_size_change));
     this -> visual_seed_dw = new SeedDrawingArea (this);
     // Generate the Window Elements
