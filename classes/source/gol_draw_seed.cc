@@ -56,6 +56,7 @@ GolDrawSeed::GolDrawSeed() : grid_x_size_adj_digits(Gtk::Adjustment::create(50.0
 // Game of Life Seed Drawign Deconstructor
 GolDrawSeed::~GolDrawSeed()
 {
+    // Any time 'new' is used; !!!MAKE SURE TO CLEAN UP!!!
     delete this -> grid_x_size;
     delete this -> exit_methds_container;
     delete this -> main_layout;
@@ -125,5 +126,3 @@ GolDrawSeed::SeedDrawingArea::SeedDrawingArea(GolDrawSeed *gol_draw_seed)
 GolDrawSeed::SeedDrawingArea::~SeedDrawingArea()
 {
 }
-
-
