@@ -91,6 +91,11 @@ class GolDrawSeed : public Gtk::Window
         void on_grid_y_size_change();
         double current_grid_x_size;
         double current_grid_y_size;
+    // Seed Grid Generation Varibles
+        float slider_coeff;
+        // These are stubs that need functions
+        unsigned int drawing_area_x_Size;
+        unsigned int drawing_area_y_size;
     // Layout
     protected:
         Gtk::VBox *main_layout;

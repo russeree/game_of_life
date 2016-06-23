@@ -77,9 +77,20 @@ GolDrawSeed::~GolDrawSeed()
 // Generates a grid for users to visualize the game of life seed
 guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
 {
-    int divisions = 0;
+    // Get the size of the divisons by taking the width and dividing it by a scale and the current desired grid size)
+    float denominator = ((current_grid_x_size) * (this -> slider_coeff));
+    if (denominator <= 0)
+    {
+         denominator = 1;
+    }
+    unsigned int divisions = floor(x_size / denominator);
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *image = new guint8[array_size];
+    // Set the pixel values to white
+    for (int i = 0; i < array_size; i++)
+    {
+        image[i] = 255;
+    }
     // Generate the Grid based on the scale of the drawing area
     //
     this -> status = enumGolDrawSeedStatus::success;
