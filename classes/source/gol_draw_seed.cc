@@ -11,6 +11,8 @@ GolDrawSeed::GolDrawSeed() :
     grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0)),
     grid_y_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0))
 {
+    this -> grid_line_width = 1;
+    this -> slider_coeff = 1;
     // Setup Window Size
     this -> window_size_x = 512;
     this -> window_size_y = 512;
@@ -86,10 +88,24 @@ guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_si
     unsigned int divisions = floor(x_size / denominator);
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *image = new guint8[array_size];
-    // Set the pixel values to white
-    for (int i = 0; i < array_size; i++)
+    // Determine if a pixel needs to be drawn
+    for (int i = 0; i < y_size; i++)
     {
-        image[i] = 255;
+        for (int j = 0; j < x_size; j++)
+        {
+            for (int k = 0; k < channels; k++)
+            {
+                unsigned int current_cell = ((x_size * i) + (channels * j) + k);
+                if ((j % divisions) == 0)
+                {
+                    image[current_cell] = 255;
+                }
+                else
+                {
+                    image[current_cell] = 0;
+                }
+            }
+        }
     }
     // Generate the Grid based on the scale of the drawing area
     //
@@ -149,7 +165,7 @@ void GolDrawSeed::on_grid_x_size_change()
         std::cout << "The X Size Slider Value is " << this -> current_grid_x_size << '\n';
     }
 
-    this -> seed_img_raw_buf = debug_image_gen(seed_img_width, seed_img_height, seed_img_channels);
+    this -> seed_img_raw_buf = seed_grid_image_gen(seed_img_width, seed_img_height, seed_img_channels);
     this -> seed_img = Gdk::Pixbuf::create_from_data (
             seed_img_raw_buf,
             Gdk::COLORSPACE_RGB,
