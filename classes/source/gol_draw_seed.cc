@@ -77,6 +77,16 @@ GolDrawSeed::~GolDrawSeed()
     delete this -> visual_seed_dw;
     delete this -> seed_img_raw_buf;
 }
+// Generates a grid for users to visualize the game of life seed
+guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
+{
+    unsigned int array_size = (x_size * y_size * channels);
+    guint8 *image = new guint8[array_size];
+    //Generate the grid
+
+    this -> status = enumGolDrawSeedStatus::success;
+    return image;
+}
 
 // Generates Debug Image (Consists of Random Pixels)
 guint8 *GolDrawSeed::debug_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
@@ -138,7 +148,7 @@ void GolDrawSeed::on_grid_x_size_change()
             8,
             seed_img_width,
             seed_img_height,
-            3
+            seed_img_width
         );
     this ->  visual_seed_dw -> queue_draw();
     this -> status = (int)enumGolDrawSeedStatus::success;

@@ -99,6 +99,8 @@ class GolDrawSeed : public Gtk::Window
         Glib::RefPtr<Gdk::Pixbuf> seed_img;
         // Game of life Drawing Seed Class
         SeedDrawingArea *visual_seed_dw;
+        // Drawing the Grid
+        guint8 *seed_grid_image_gen (unsigned int x_size, unsigned int  y_size, unsigned int channels);
         // Debug Functions
         guint8 *debug_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels);
 };
