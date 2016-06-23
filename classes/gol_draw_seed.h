@@ -19,6 +19,11 @@
 #include <gdkmm/general.h>
 // Glibmm Includes
 #include <glibmm/refptr.h>
+// C++ Libs
+#include <iostream>
+#include <cmath>
+#include <random>
+
 
 // Drawing Seed Status
 namespace enumGolDrawSeedStatus

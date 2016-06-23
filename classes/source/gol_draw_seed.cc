@@ -6,9 +6,6 @@
 
 #include "gol_draw_seed.h"
 
-#include <iostream>
-#include <random>
-
 // Game of Life Seed Drawing Construction
 GolDrawSeed::GolDrawSeed() :
     grid_x_size_adj_digits(Gtk::Adjustment::create(50.0, 0.0, 100.0, 5.0, 20.0)),
@@ -80,10 +77,11 @@ GolDrawSeed::~GolDrawSeed()
 // Generates a grid for users to visualize the game of life seed
 guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_size, unsigned int channels)
 {
+    int divisions = 0;
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *image = new guint8[array_size];
-    //Generate the grid
-
+    // Generate the Grid based on the scale of the drawing area
+    //
     this -> status = enumGolDrawSeedStatus::success;
     return image;
 }
