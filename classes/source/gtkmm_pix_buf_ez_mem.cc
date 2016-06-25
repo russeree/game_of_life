@@ -7,28 +7,23 @@
 #include "gtkmm_pixbuf_ez_mem.h"
 
 // Constructor
-GtkmmPixbufEzMem::GtkmmPixbufEzMem()
+GtkmmPixBufEzMem::GtkmmPixBufEzMem()
 {
 }
 
 // Deconsturctor
-GtkmmPixbufEzMem::~GtkmmPixbufEzMem()
+GtkmmPixBufEzMem::~GtkmmPixBufEzMem()
 {
 }
 
-void GtkmmPixbufEzMem::write_pix(guint8 *image, guint8 *pix_data, unsigned int channels, unsigned int loc_x, unsigned int loc_y, unsigned int rowstride, unsigned int array_size)
+void GtkmmPixBufEzMem::write_pix(guint8 *image, guint8 *pix_data, unsigned int channels, unsigned int loc_x, unsigned int loc_y, unsigned int rowstride, unsigned int array_size)
 {
-    guint8 *pixel_arr_loc;
-    pixel_arr_loc = image + (loc_y * rowstride) + (loc_x * channels);
-    try
+    guint8 *pixel_arr_loc = image + (loc_y * rowstride) + (loc_x * channels);
+    // std::cout << "The Location of the Pixel Buffer is " << &pixel_arr_loc << '\n';
+    // std::cout << "The max size of the array is "<< &image + array_size << '\n';
+    // Now write the pixel locations
+    for(unsigned int i = 0; i < channels; i++)
     {
-        if(pixel_arr_loc > (image + array_size))
-        {
-            throw 0;
-        }
-    }
-    catch(int error_id)
-    {
-        std::cout << "Pixel location is out of image memory boundires.\n";
+        pixel_arr_loc[i] = pix_data[i];
     }
 }

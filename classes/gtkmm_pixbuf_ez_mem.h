@@ -12,14 +12,14 @@
 #include <gdkmm/pixbuf.h>
 #include <iostream>
 
-class GtkmmPixbufEzMem
+class GtkmmPixBufEzMem
 {
     // Con/de(structors)
     public:
-        GtkmmPixbufEzMem();
-        virtual ~GtkmmPixbufEzMem();
+        GtkmmPixBufEzMem();
+        virtual ~GtkmmPixBufEzMem();
     public:
         //Static  Write a pixel to an 1d array of guint8: No rowstep handler yet
-        void write_pix(guint8 *image, guint8 *pix_data, unsigned int channels, unsigned int loc_x, unsigned int loc_y, unsigned int rowstride, unsigned int array_size);
+        static void write_pix(guint8 *image, guint8 *pix_data, unsigned int channels, unsigned int loc_x, unsigned int loc_y, unsigned int rowstride, unsigned int array_size);
 };
 #endif

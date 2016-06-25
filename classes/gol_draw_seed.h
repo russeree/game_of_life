@@ -23,7 +23,8 @@
 #include <iostream>
 #include <cmath>
 #include <random>
-
+// Local Class Includes
+#include "gtkmm_pixbuf_ez_mem.h"
 
 // Drawing Seed Status
 namespace enumGolDrawSeedStatus
@@ -54,10 +55,10 @@ class GolDrawSeed : public Gtk::Window
     // Game of life Drawing Seed Class
     protected:
         class SeedDrawingArea : public Gtk::DrawingArea
-        {
-            public:
-                // Status
-                int status;
+    {
+        public:
+            // Status
+            int status;
                 // Pointer to an object of same type as outer class;
                 GolDrawSeed *gds_p;
                 // Constructor and Deconstructor

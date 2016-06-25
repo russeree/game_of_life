@@ -18,7 +18,7 @@ GolDrawSeed::GolDrawSeed() :
     this -> window_size_y = 512;
     // Set the default class states
     this -> status = (int)enumGolDrawSeedStatus::initialized;
-    this -> debug = (int)enumGolDrawSeedDebug::verbose;
+    this -> debug = (int)enumGolDrawSeedDebug::none;
     // Setup the seed image size
     this -> seed_img_height = 512;
     this -> seed_img_width = 512;
@@ -87,30 +87,19 @@ guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_si
     }
     unsigned int divisions = floor(x_size / denominator);
     unsigned int array_size = (x_size * y_size * channels);
-
+    guint8 *pix_data = new guint8[channels];
     guint8 *image = new guint8[array_size];
-
+    pix_data[0] = 0;
+    pix_data[1] = this -> current_grid_x_size * 2.55;
+    pix_data[2] = 0;
     // Determine if a pixel needs to be drawn
-    for (int i = 0; i < y_size; i++)
-    {
-        for (int j = 0; j < x_size; j++)
+    for (int i = 0; i < y_size; i++){
+        for(int j = 0; j < x_size; j++)
         {
-            for (int k = 0; k < channels; k++)
-            {
-                unsigned int cur_element = ((x_size * i) + (channels * j) + k);
-                if ((j * 2) == x_size)
-                {
-                    image[cur_element] = 255;
-                }
-                else
-                {
-                    image[cur_element] = 0;
-                }
-            }
+            GtkmmPixBufEzMem::write_pix(image, pix_data, channels, j, i, x_size * channels, array_size);
         }
     }
     // Generate the Grid based on the scale of the drawing area
-    //
     this -> status = enumGolDrawSeedStatus::success;
     return image;
 }
@@ -162,11 +151,12 @@ bool GolDrawSeed::SeedDrawingArea::on_draw(const Cairo::RefPtr<Cairo::Context>& 
 void GolDrawSeed::on_grid_x_size_change()
 {
     this -> current_grid_x_size = this -> grid_x_size -> get_value();
+    /* FIX ME
     if (this -> debug = (int)enumGolDrawSeedDebug::verbose)
     {
         std::cout << "The X Size Slider Value is " << this -> current_grid_x_size << '\n';
     }
-
+    */
     this -> seed_img_raw_buf = seed_grid_image_gen(seed_img_width, seed_img_height, seed_img_channels);
     this -> seed_img = Gdk::Pixbuf::create_from_data (
             seed_img_raw_buf,
@@ -202,3 +192,8 @@ GolDrawSeed::SeedDrawingArea::SeedDrawingArea(GolDrawSeed *gol_draw_seed)
 GolDrawSeed::SeedDrawingArea::~SeedDrawingArea()
 {
 }
+
+/*
+ * Notes
+ * Make sure to write pixel algo for memory
+ */
