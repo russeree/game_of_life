@@ -26,7 +26,7 @@ void GtkmmPixBufEzMem::write_pix(guint8 *image, guint8 *pix_data, unsigned int c
     }
 }
 
-// This function is not memory safe; Take in R,G and B values and pushes them to an array
+// This function is not memory safe; Take in R,G and B values and then pushes them to an array
 void GtkmmPixBufEzMem::rgb_to_pix_data(guint8 *pixdata, guint8 red, guint8 green, guint8 blue)
 {
     pixdata[0] = red;
@@ -34,7 +34,7 @@ void GtkmmPixBufEzMem::rgb_to_pix_data(guint8 *pixdata, guint8 red, guint8 green
     pixdata[2] = green;
 }
 
-// This function is not memory safe; Take in R,G and B values and pushes them to an array
+// This function is not memory safe; Take in R,G,B and Alpha values then pushes them to an array
 void GtkmmPixBufEzMem::rgba_to_pix_data(guint8 *pixdata, guint8 red, guint8 green, guint8 blue, guint8 alpha)
 {
     pixdata[0] = red;
