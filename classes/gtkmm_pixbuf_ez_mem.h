@@ -19,6 +19,6 @@ class GtkmmPixbufEzMem
         virtual ~GtkmmPixbufEzMem();
     public:
         //Static  Write a pixel to an 1d array of guint8: No rowstep handler yet
-        static int write_3_chnl_pix(guint8 *image, unsigned int loc_x, unsigned int loc_y, unsigned int array_size, guint8 red, guint8 green, guint8 blue);
+        static void write_3_chnl_pix(guint8 *image, unsigned int loc_x, unsigned int loc_y, unsigned int size_x, unsigned int size_y,  unsigned int array_size, guint8 red, guint8 green, guint8 blue);
 };
 #endif
