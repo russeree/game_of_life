@@ -10,6 +10,7 @@
 // Include the Pixbuf Type to Gain Access to the GTKMM Pixbuf types
 
 #include <gdkmm/pixbuf.h>
+#include <iostream>
 
 class GtkmmPixbufEzMem
 {
@@ -19,6 +20,6 @@ class GtkmmPixbufEzMem
         virtual ~GtkmmPixbufEzMem();
     public:
         //Static  Write a pixel to an 1d array of guint8: No rowstep handler yet
-        static void write_3_chnl_pix(guint8 *image, unsigned int loc_x, unsigned int loc_y, unsigned int size_x, unsigned int size_y,  unsigned int array_size, guint8 red, guint8 green, guint8 blue);
+        void write_pix(guint8 *image, guint8 *pix_data, unsigned int channels, unsigned int loc_x, unsigned int loc_y, unsigned int rowstride, unsigned int array_size);
 };
 #endif

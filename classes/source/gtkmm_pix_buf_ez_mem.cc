@@ -16,6 +16,19 @@ GtkmmPixbufEzMem::~GtkmmPixbufEzMem()
 {
 }
 
-void GtkmmPixbufEzMem::write_3_chnl_pix(guint8 *image, unsigned int loc_x, unsigned int loc_y, unsigned int size_x, unsigned int size_y, unsigned int array_size, guint8 red, guint8 green, guint8 blue)
+void GtkmmPixbufEzMem::write_pix(guint8 *image, guint8 *pix_data, unsigned int channels, unsigned int loc_x, unsigned int loc_y, unsigned int rowstride, unsigned int array_size)
 {
+    guint8 *pixel_arr_loc;
+    pixel_arr_loc = image + (loc_y * rowstride) + (loc_x * channels);
+    try
+    {
+        if(pixel_arr_loc > (image + array_size))
+        {
+            throw 0;
+        }
+    }
+    catch(int error_id)
+    {
+        std::cout << "Pixel location is out of image memory boundires.\n";
+    }
 }
