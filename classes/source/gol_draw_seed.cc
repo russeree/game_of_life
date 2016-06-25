@@ -87,7 +87,9 @@ guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_si
     }
     unsigned int divisions = floor(x_size / denominator);
     unsigned int array_size = (x_size * y_size * channels);
+
     guint8 *image = new guint8[array_size];
+
     // Determine if a pixel needs to be drawn
     for (int i = 0; i < y_size; i++)
     {
@@ -95,14 +97,14 @@ guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_si
         {
             for (int k = 0; k < channels; k++)
             {
-                unsigned int current_cell = ((x_size * i) + (channels * j) + k);
-                if ((j % divisions) == 0)
+                unsigned int cur_element = ((x_size * i) + (channels * j) + k);
+                if ((j * 2) == x_size)
                 {
-                    image[current_cell] = 255;
+                    image[cur_element] = 255;
                 }
                 else
                 {
-                    image[current_cell] = 0;
+                    image[cur_element] = 0;
                 }
             }
         }
@@ -173,7 +175,7 @@ void GolDrawSeed::on_grid_x_size_change()
             8,
             seed_img_width,
             seed_img_height,
-            seed_img_width
+            seed_img_width * seed_img_channels
         );
     this ->  visual_seed_dw -> queue_draw();
     this -> status = (int)enumGolDrawSeedStatus::success;
