@@ -11,6 +11,13 @@
 
 #include <gdkmm/pixbuf.h>
 #include <iostream>
+/*
+ * This class constis of functions that can be called staticly from other classes.
+ * the primary purpose of this class is to clean up code and allow for fast(unsafe)
+ * and slow safe memory operations that modify guint8 buffers that will be converted
+ * wrapped with a Gdk:Pixbuf. As of right now these functions are prelimanry and
+ * offer untest ed functionality
+ */
 
 class GtkmmPixBufEzMem
 {
