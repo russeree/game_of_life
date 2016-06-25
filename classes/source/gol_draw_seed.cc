@@ -89,14 +89,18 @@ guint8 *GolDrawSeed::seed_grid_image_gen (unsigned int x_size, unsigned int y_si
     unsigned int array_size = (x_size * y_size * channels);
     guint8 *pix_data = new guint8[channels];
     guint8 *image = new guint8[array_size];
-    pix_data[0] = 0;
-    pix_data[1] = this -> current_grid_x_size * 2.55;
-    pix_data[2] = 0;
     // Determine if a pixel needs to be drawn
-    for (int i = 0; i < y_size; i++){
-        for(int j = 0; j < x_size; j++)
+    for (int y = 0; y < y_size; y++){
+        for(int x = 0; x < x_size; x++)
         {
-            GtkmmPixBufEzMem::write_pix(image, pix_data, channels, j, i, x_size * channels, array_size);
+            if((x % divisions == 0) || (y % divisions == 0)){
+                GtkmmPixBufEzMem::rgb_to_pix_data(pix_data, 255, 255, 255);
+            }
+            else
+            {
+                GtkmmPixBufEzMem::rgb_to_pix_data(pix_data, 0, 0, 0);
+            }
+            GtkmmPixBufEzMem::write_pix(image, pix_data, channels, x, y, x_size * channels, array_size);
         }
     }
     // Generate the Grid based on the scale of the drawing area
@@ -192,8 +196,3 @@ GolDrawSeed::SeedDrawingArea::SeedDrawingArea(GolDrawSeed *gol_draw_seed)
 GolDrawSeed::SeedDrawingArea::~SeedDrawingArea()
 {
 }
-
-/*
- * Notes
- * Make sure to write pixel algo for memory
- */
