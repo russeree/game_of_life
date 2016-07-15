@@ -3,7 +3,7 @@
 An implementation of Conways game of life that 
 supports parallel processing. Essentially there are 24 of these
 games running at the same time. 8 games per channel with 3 
-total channels.
+total channels. OpenCL Will be targeted for atomic values.
 
 ## Purpose:
 Conway's Game of Life RGB is designed to be 
