@@ -1,4 +1,5 @@
 # Conway's Game of Life RGB GTKMM
+
 ## Description:
 An implementation of Conways game of life that 
 supports parallel processing. Essentially there are 24 of these
